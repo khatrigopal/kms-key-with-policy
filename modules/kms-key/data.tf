@@ -1,7 +1,7 @@
 data "aws_iam_policy_document" "test_kms_policy" {
   # Allow root users full management access to key
   statement {
-    sid = "Allow Access"
+    #sid = "Allow Access"
     effect = "Allow"
     actions = ["kms:Encrypt", "kms:Decrypt"]
     
