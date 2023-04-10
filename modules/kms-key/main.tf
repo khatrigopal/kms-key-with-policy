@@ -6,6 +6,11 @@ variable "key_alias" {
   type        = string
 }
 
+variable "key_policy" {
+  description = "The alias to associate with the KMS key"
+  type        = string
+}
+
 
 
 resource "aws_kms_key" "test_key" {
@@ -16,7 +21,7 @@ resource "aws_kms_key" "test_key" {
   customer_master_key_spec = "SYMMETRIC_DEFAULT"
   is_enabled               = true
   #policy = data.aws_iam_policy_document.kms_key_policy.json
-  
+  policy = var.key_policy
  }
 
 
