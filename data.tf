@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "kms_key_policy" {
     }
     actions = [
       "kms:Encrypt",
-      "kms:Decrytpt
+      "kms:Decrytpt"
     ]
     resources=["*"]
  }
