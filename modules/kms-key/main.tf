@@ -23,12 +23,12 @@ resource "aws_kms_key" "test_key" {
 data "aws_iam_policy_document" "test_kms_policy" {
   # Allow root users full management access to key
   statement {
-    Sid = "Allow Access"
-    Effect = "Allow"
-    Actions = ["kms:Encrypt", "kms:Decrypt"]
+    sid = "Allow Access"
+    effect = "Allow"
+    ections = ["kms:Encrypt", "kms:Decrypt"]
     
-    Resources = [aws_kms_key.test_key.arn]
-    Principal = {
+    resources = [aws_kms_key.test_key.arn]
+    principals = {
       AWS = "*"
     }
       #identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
