@@ -1,6 +1,6 @@
 module "test_kms_key" {
   source = "./modules/kms-key"
-  key_alias  = "alias/testing-for-key"
+  key_alias  = "alias/testing-for-kms-key"
   #key_name        = "first-test-key"
   #key_description = "First Test KMS key"
 
