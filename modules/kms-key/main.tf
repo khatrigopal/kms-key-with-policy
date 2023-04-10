@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "test_kms_policy" {
 }
 
 resource "aws_iam_policy" "kms_policy" {
-  name   = "test-kms-policy"
+  name   = "testing-kms-policy"
   policy = data.aws_iam_policy_document.test_kms_policy.json
 }
 
