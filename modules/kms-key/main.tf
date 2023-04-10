@@ -8,9 +8,9 @@ resource "aws_kms_key" "test_key" {
   description             = "KMS key for encrypting sensitive data"
   enable_key_rotation     = true
   #key_usage  = "ENCRYPT_DECRYPT"
-  customer_master_key_specification {
-    algorithm = "SYMMETRIC_DEFAULT"
-  }
+  is_enabled               = true
+  customer_master_key_spec = SYMMETRIC_DEFAULT
+  
  }
 
 data "aws_iam_policy_document" "test_kms_policy" {
