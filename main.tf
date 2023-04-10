@@ -1,6 +1,6 @@
 module "test_kms_key" {
   source = "./modules/kms-key"
-  key_alias  = "alias/change-policy-key"
+  key_alias  = "alias/new-policy-key"
   #key_name        = "first-test-key"
   #key_description = "First Test KMS key"
   key_policy = data.aws_iam_policy_document.kms_key_policy.json
