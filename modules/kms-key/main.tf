@@ -15,7 +15,7 @@ resource "aws_kms_key" "test_key" {
   
   customer_master_key_spec = "SYMMETRIC_DEFAULT"
   is_enabled               = true
-  policy = data.aws_iam_policy_document.kms_key_policy.json
+  #policy = data.aws_iam_policy_document.kms_key_policy.json
   
  }
 
