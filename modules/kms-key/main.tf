@@ -1,3 +1,9 @@
+variable "key_alias" {
+  description = "The alias to associate with the KMS key"
+  type        = string
+}
+
+
 resource "aws_kms_key" "test_key" {
   description = var.key_description
   #key_usage  = "ENCRYPT_DECRYPT"
@@ -22,6 +28,11 @@ resource "aws_iam_policy" "example_kms_policy" {
 resource "aws_kms_key_policy" "test_kms_policy" {
   key_id = aws_kms_key.test_key.key_id
   policy = aws_iam_policy.test_kms_policy.policy
+}
+
+resource "aws_kms_alias" "test_key_alias" {
+  name          = var.key_alias
+  target_key_id = aws_kms_key.test_key.key_id
 }
 
 output "kms_key_arn" {
