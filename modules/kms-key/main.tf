@@ -3,6 +3,8 @@ variable "key_alias" {
   type        = string
 }
 
+data "aws_caller_identity" "current" {}
+
 
 resource "aws_kms_key" "test_key" {
   description             = "KMS key for encrypting sensitive data"
@@ -17,6 +19,12 @@ resource "aws_kms_key" "test_key" {
 data "aws_iam_policy_document" "test_kms_policy" {
   statement {
     actions   = ["kms:Encrypt", "kms:Decrypt"]
+    
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
+    }
+    
     resources = [aws_kms_key.test_key.arn]
     effect    = "Allow"
   }
