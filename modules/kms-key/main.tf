@@ -5,7 +5,8 @@ variable "key_alias" {
 
 
 resource "aws_kms_key" "test_key" {
-  description = var.key_description
+  description             = "KMS key for encrypting sensitive data"
+  enable_key_rotation     = true
   #key_usage  = "ENCRYPT_DECRYPT"
   customer_master_key_specification {
     algorithm = "SYMMETRIC_DEFAULT"
