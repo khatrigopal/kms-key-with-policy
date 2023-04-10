@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "test_kms_policy" {
   }
 }
 
-resource "aws_iam_policy" "example_kms_policy" {
+resource "aws_iam_policy" "test_kms_policy" {
   name   = "example-kms-policy"
   policy = data.aws_iam_policy_document.test_kms_policy.json
 }
