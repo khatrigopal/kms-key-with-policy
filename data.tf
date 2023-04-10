@@ -8,10 +8,10 @@ data "aws_iam_policy_document" "kms_key_policy" {
     effect = "Allow"
     principals  {
       type = "AWS"
-      identifiers = [
-        "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root", 
-        "arn:aws_iam_user.current_user.arn"                           
-      ]
+      identifiers = [data.aws_iam_user.current_user.arn]
+       # "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root", 
+        #"arn:aws_iam_user.current_user.arn"                           
+      #]
     }
     actions = [
       "kms:Encrypt",
