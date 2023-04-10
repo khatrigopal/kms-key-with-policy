@@ -1,3 +1,6 @@
+
+
+
 variable "key_alias" {
   description = "The alias to associate with the KMS key"
   type        = string
@@ -5,8 +8,16 @@ variable "key_alias" {
 
 data "aws_caller_identity" "current" {}
 
-
-
+resource "aws_kms_key" "test_key" {
+  description             = "KMS key for encrypting sensitive data"
+  enable_key_rotation     = true
+  key_usage  = "ENCRYPT_DECRYPT"
+  
+  customer_master_key_spec = "SYMMETRIC_DEFAULT"
+  is_enabled               = true
+  policy = data.aws_iam_policy_document.test_kms_policy.json
+  
+ }
 
 
 data "aws_iam_policy_document" "test_kms_policy" {
@@ -25,16 +36,6 @@ data "aws_iam_policy_document" "test_kms_policy" {
   }
 }
 
-resource "aws_kms_key" "test_key" {
-  description             = "KMS key for encrypting sensitive data"
-  enable_key_rotation     = true
-  key_usage  = "ENCRYPT_DECRYPT"
-  
-  customer_master_key_spec = "SYMMETRIC_DEFAULT"
-  is_enabled               = true
-  policy = data.aws_iam_policy_document.test_kms_policy.json
-  
- }
 
 #resource "aws_iam_policy" "kms_policy" {
  # name   = "testing-kms-policy"
