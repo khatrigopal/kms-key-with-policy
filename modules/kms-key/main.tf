@@ -29,6 +29,7 @@ data "aws_iam_policy_document" "test_kms_policy" {
       identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
     }
   }
+}
 
 resource "aws_iam_policy" "kms_policy" {
   name   = "test-kms-policy"
