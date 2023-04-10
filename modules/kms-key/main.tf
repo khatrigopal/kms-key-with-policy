@@ -19,7 +19,7 @@ resource "aws_kms_key" "test_key" {
   key_usage  = "ENCRYPT_DECRYPT"
   
   customer_master_key_spec = "SYMMETRIC_DEFAULT"
-  is_enabled               = true
+  #is_enabled               = true
   #policy = data.aws_iam_policy_document.kms_key_policy.json
   policy = var.key_policy
  }
