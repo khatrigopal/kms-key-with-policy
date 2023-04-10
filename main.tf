@@ -12,6 +12,12 @@ variable "key_alias" {
   type        = string
   default = ""
 }
+  
+variable "key_policy" {
+  description = "The alias to associate with the KMS key"
+  type        = string
+  default = ""
+}
 
 output "kms_key_arn" {
   value = module.test_kms_key.kms_key_arn
