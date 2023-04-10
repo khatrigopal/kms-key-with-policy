@@ -28,11 +28,10 @@ data "aws_iam_policy_document" "test_kms_policy" {
     actions = ["kms:Encrypt", "kms:Decrypt"]
     
     resources = [aws_kms_key.test_key.arn]
-    principals {
-     type        = "AWS"
+    principals { AWS = "*" }
       #identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
-      identifiers = ["*"]
-    }
+     # identifiers = ["*"]
+    #}
   }
 }
 
